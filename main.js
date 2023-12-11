@@ -27,6 +27,7 @@ function leFormulario(event) {
     atualizaTela();
 }
 
+
 function preencheLista(lista, estoqueDaPessoa) {
     lista.textContent = "";
 
@@ -37,6 +38,7 @@ function preencheLista(lista, estoqueDaPessoa) {
         lista.appendChild(li);
     }
 }
+
 
 function atualizaTela() {
     const estoque = getEstoque();
@@ -53,4 +55,3 @@ function atualizaTela() {
         preencheLista(olMaria, estoque.maria);
     }
 }
-
