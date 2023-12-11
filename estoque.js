@@ -12,6 +12,7 @@ function getEstoque() {
 }
 
 function transacaoNoEstoque(origem, destino, tipo, quantidade) {
+
     if (!estoque[origem] && origem !== "pomar") {
         estoque[origem] = [];
     }
@@ -23,6 +24,7 @@ function transacaoNoEstoque(origem, destino, tipo, quantidade) {
     if (quantidade < 0 || origem === destino) {
         return;
     }
+
     if (destino === "pomar") {
         let itemEncontrado = estoque[origem].find(item => item.tipo === tipo);
 
@@ -37,6 +39,8 @@ function transacaoNoEstoque(origem, destino, tipo, quantidade) {
         }
         return;
     }
+
+
     if (origem === "pomar") {
         const itemEncontrado = estoque[destino].find(item => item.tipo === tipo);
         if (itemEncontrado) {
@@ -46,6 +50,7 @@ function transacaoNoEstoque(origem, destino, tipo, quantidade) {
         }
         return;
     }
+
     else {
         let itemOrigem = estoque[origem].find(item => item.tipo === tipo);
         let itemDestino = estoque[destino].find(item => item.tipo === tipo);
@@ -53,6 +58,7 @@ function transacaoNoEstoque(origem, destino, tipo, quantidade) {
         if (!itemOrigem) {
             return;
         }
+
         else if (itemOrigem.quantidade < quantidade) {
             if (itemDestino) {
                 itemDestino.quantidade += itemOrigem.quantidade;
@@ -61,6 +67,7 @@ function transacaoNoEstoque(origem, destino, tipo, quantidade) {
             }
             itemOrigem.quantidade = 0;
         }
+
         else {
             if (itemDestino) {
                 itemDestino.quantidade += quantidade;
@@ -72,6 +79,9 @@ function transacaoNoEstoque(origem, destino, tipo, quantidade) {
     }
     return;
 }
+
 function limpaEstoque() {
     estoque = {};
 }
+
+export { getEstoque, transacaoNoEstoque, limpaEstoque };
