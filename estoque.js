@@ -72,3 +72,6 @@ function transacaoNoEstoque(origem, destino, tipo, quantidade) {
     }
     return;
 }
+function limpaEstoque() {
+    estoque = {};
+}
